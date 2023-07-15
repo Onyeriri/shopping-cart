@@ -3,7 +3,7 @@ import { createContext } from 'react';
 import { useFetch } from '../hooks/useFetch';
 import { CLEAR_CART, DECREASE_AMOUNT, INCREASE_AMOUNT, REMOVE_ITEM, URL } from '../actions';
 import { reducer } from '../reducer/index';
-import { getTotal } from '../utils/getTotals';
+// import { getTotal } from '../utils/getTotals';
 
 const AppContext = createContext();
 export const useGlobalContext = () => useContext(AppContext);
@@ -26,7 +26,7 @@ const defaultState = {
 
 const AppProvider = ({ children }) => {
     const [cart, dispatch] = useReducer(reducer, defaultState);
-    getTotal
+    // getTotal
 
     const handleClearCart = () => {
         dispatch({type: CLEAR_CART});
@@ -46,7 +46,7 @@ const AppProvider = ({ children }) => {
 
     useFetch(URL, dispatch);
 
-    console.log(cart);
+    // console.log(cart);
     
     return (
         <AppContext.Provider

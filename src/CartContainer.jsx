@@ -1,10 +1,10 @@
 import CartItem from './CartItem';
 import { useGlobalContext } from './context/context';
-// import cartItems from './data';
 
 const CartContainer = () => {
   const { cart, handleClearCart } = useGlobalContext();
   let totalPrice = 0;
+  let newId = ''
 
   // const cartArray = [...cartItems];
   const cartItems = [...cart.carts]
@@ -34,7 +34,8 @@ const CartContainer = () => {
       <div>
         {cartItems.map((cartItem) => {
           const [key, { id, img, price, title, amount }] = cartItem;
-          totalPrice += (+price * 100);
+
+          totalPrice += (+price * 100) * amount;
           return <CartItem
             amount={amount}
             key={key}

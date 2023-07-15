@@ -1,17 +1,9 @@
-export const getTotal = (cart, passedId) => {
-    let totalAmount = 0;
-    let totalPrice = 0;
+export const subTotal = (cart, passedId) => {
+    const total = 0;
 
     for (let [key, { price, amount, id }] of [...cart]) {
-        // totalAmount += amount;
-        if (id === passedId) {
-            totalPrice = amount * +price;
+        if (passedId === id) {
+            return Number(price) * amount;
         }
-
-        
     }
-
-    
-
-    return totalPrice
-}
+};

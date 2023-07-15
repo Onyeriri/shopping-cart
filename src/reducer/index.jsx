@@ -1,8 +1,9 @@
 import { CLEAR_CART, DECREASE_AMOUNT, INCREASE_AMOUNT, REMOVE_ITEM, UPDATE_STATE } from '../actions';
+import { subTotal } from '../utils/getTotals';
 
 export const reducer = (state, action) => {
     if (action.type === CLEAR_CART) {
-        console.log('clear cart');
+        // console.log('clear cart');
         return {
             ...state, carts: new Map()
         };
@@ -19,17 +20,14 @@ export const reducer = (state, action) => {
 
     } else if (action.type === INCREASE_AMOUNT) {
         const { payload } = action;
-        let newPrice = 0;
+        // let newPrice = 0;
 
         const cartItems = new Map(state.carts)
 
         const currentItem = cartItems.get(payload);
 
-        const { amount, price } = currentItem;
-        newPrice = Number(price) * amount;
-        const newItem = { ...currentItem, amount: amount + 1, price: newPrice}
-
-        console.log(newItem);
+        const { amount } = currentItem;
+        const newItem = { ...currentItem, amount: amount + 1}
         
         cartItems.set(payload, newItem)
         return {
